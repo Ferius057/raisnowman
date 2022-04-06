@@ -13,14 +13,13 @@ public class SnowmanCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
         if (sender instanceof Player) {
-            Player p = (Player) sender;
+            Player player = (Player) sender;
 
-            snowTask = new SnowmanRunnable(p).runTaskTimer(Main.getInstance(), 0L, 24000L);
+            snowTask = new SnowmanRunnable(player).runTaskTimer(Main.getInstance(), 0L, 24000L);
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.getInstance().getConfig().getString("Messages.snowman-spawn")));
-            return true;
-        }
-
-        sender.sendMessage(ChatColor.AQUA + "Команда доступна только для игроков!");
+        } else
+            sender.sendMessage(ChatColor.AQUA + "Команда доступна только для игроков!");
+        
         return true;
     }
 
