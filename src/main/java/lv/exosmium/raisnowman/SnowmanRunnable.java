@@ -10,14 +10,14 @@ import org.bukkit.entity.Snowman;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class SnowmanRunnable extends BukkitRunnable {
-    private final Player p;
+    private final Player player;
     private static String name = ChatColor.translateAlternateColorCodes('&', Main.getInstance().getConfig().getString("Settings.snowman-name"));
     private Integer radius = Main.getInstance().getConfig().getInt("Settings.spawn-radius");
     private boolean snowmanExists = false;
     private static Snowman snowMan;
 
     public SnowmanRunnable(Player player) {
-        this.p = player;
+        this.player = player;
     }
 
     @Override
@@ -27,10 +27,10 @@ public class SnowmanRunnable extends BukkitRunnable {
             SnowmanCommand.cancelTask();
         }
 
-        Location pLocation = p.getLocation();
-        World world = p.getWorld();
-        Integer snowX = getRandomNumber(pLocation.getX()-radius/2, pLocation.getX()+radius/2);
-        Integer snowZ= getRandomNumber(pLocation.getZ()-radius/2, pLocation.getZ()+radius/2);
+        Location playerLocation = player.getLocation();
+        World world = player.getWorld();
+        Integer snowX = getRandomNumber(playerLocation.getX()-radius/2, playerLocation.getX()+radius/2);
+        Integer snowZ= getRandomNumber(playerLocation.getZ()-radius/2, playerLocation.getZ()+radius/2);
         Integer snowY = world.getHighestBlockAt(snowX, snowZ).getY();
         Location snowLocation = new Location(world, snowX, snowY, snowZ);
 
