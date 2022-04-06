@@ -1,8 +1,10 @@
+# Плагин raiSnowMan v1.0 написан Exosmium (vk.com/lovelygalaxy)
+
 name: raiSnowMan
 version: '${project.version}'
 main: lv.exosmium.raisnowman.Main
 authors: [ Exosmium ]
 commands:
   snowman:
-    description: Summon a snowman!
-    usage: /<command>
+    description: Призовите снеговика!
+    usage: /snowman
