@@ -1,0 +1,13 @@
+# Плагин raiSnowMan v1.0 сделан Exosmium (vk.com/lovelygalaxy)
+
+# Базовые настройки плагина
+Settings:
+  spawn-radius: 100
+  snowman-name: "&bСнеговяра"
+
+  # Команда награды
+  snowman-reward: "eco give %player% 5000"
+
+Messages:
+  snowman-found: "&bТы нашел меня, держи подарочек!"
+  snowman-spawn: "&cСнеговик появился."
