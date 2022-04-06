@@ -1,2 +1,2 @@
 # SnowMan
-SnowMan is a simple minecraft plugin which is was created to be perfect addition to the Christmas atmosphere.
+SnowMan — это простой плагин для Minecraft, который был создан, чтобы стать идеальным дополнением к рождественской атмосфере!
