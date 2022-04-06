@@ -11,10 +11,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class SnowmanRunnable extends BukkitRunnable {
     private final Player p;
-    private static Snowman snowMan;
     private static String name = ChatColor.translateAlternateColorCodes('&', Main.getInstance().getConfig().getString("Settings.snowman-name"));
     private Integer radius = Main.getInstance().getConfig().getInt("Settings.spawn-radius");
     private boolean snowmanExists = false;
+    private static Snowman snowMan;
 
     public SnowmanRunnable(Player player) {
         this.p = player;
@@ -24,7 +24,7 @@ public class SnowmanRunnable extends BukkitRunnable {
     public void run() {
         if (snowmanExists) {
             snowMan.remove();
-            SnowmanCommand.getTask().cancel();
+            SnowmanCommand.cancelTask();
         }
 
         Location pLocation = p.getLocation();
@@ -34,13 +34,10 @@ public class SnowmanRunnable extends BukkitRunnable {
         Integer snowY = world.getHighestBlockAt(snowX, snowZ).getY();
         Location snowLocation = new Location(world, snowX, snowY, snowZ);
 
-        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
-            snowMan = (Snowman) Bukkit.getWorld("world").spawnEntity(snowLocation, EntityType.SNOWMAN);
-            snowMan.setCustomName(name);
-            snowMan.setAI(false);
-            System.out.println(snowLocation);
-            snowmanExists = true;
-        }, 1L);
+        snowMan = (Snowman) Bukkit.getWorld("world").spawnEntity(snowLocation, EntityType.SNOWMAN);
+        snowMan.setCustomName(name);
+        snowMan.setAI(false);
+        snowmanExists = true;
     }
 
     public int getRandomNumber(double min, double max) {
@@ -51,7 +48,5 @@ public class SnowmanRunnable extends BukkitRunnable {
         return name;
     }
 
-    public static Snowman getSnowman() {
-        return snowMan;
-    }
+    public static void removeSnowman() { snowMan.remove(); }
 }

@@ -17,8 +17,7 @@ public class SnowmanListener implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEntityEvent event) {
         Player p = event.getPlayer();
-        if (event.getRightClicked().getType().equals(EntityType.SNOWMAN) && event.getRightClicked().getCustomName().equals(SnowmanRunnable.getSnowmanName())
-                && event.getHand().equals(EquipmentSlot.HAND)) {
+        if (event.getRightClicked().getType().equals(EntityType.SNOWMAN) && event.getRightClicked().getCustomName().equals(SnowmanRunnable.getSnowmanName()) && event.getHand().equals(EquipmentSlot.HAND)) {
 
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), snowCommand.replace("%player%", p.getName()));
             respawnSnowman(p);
@@ -36,8 +35,8 @@ public class SnowmanListener implements Listener {
     }
 
     private void respawnSnowman(Player p) {
-        SnowmanRunnable.getSnowman().remove();
-        SnowmanCommand.getTask().cancel();
-        SnowmanCommand.setTask(new SnowmanRunnable(p).runTaskTimerAsynchronously(Main.getInstance(), 1L, 24000L));
+        SnowmanRunnable.removeSnowman();
+        SnowmanCommand.cancelTask();
+        SnowmanCommand.setTask(new SnowmanRunnable(p).runTaskTimer(Main.getInstance(), 1L, 24000L));
     }
 }

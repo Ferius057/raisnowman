@@ -15,7 +15,7 @@ public class SnowmanCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
-            snowTask = new SnowmanRunnable(p).runTaskTimerAsynchronously(Main.getInstance(), 1L, 24000L);
+            snowTask = new SnowmanRunnable(p).runTaskTimer(Main.getInstance(), 0L, 24000L);
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.getInstance().getConfig().getString("Messages.snowman-spawn")));
             return true;
         }
@@ -24,9 +24,7 @@ public class SnowmanCommand implements CommandExecutor {
         return true;
     }
 
-    public static BukkitTask getTask() {
-        return snowTask;
-    }
+    public static void cancelTask() { snowTask.cancel(); }
 
     public static void setTask(BukkitTask task) {
         snowTask = task;
