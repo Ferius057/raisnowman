@@ -40,7 +40,7 @@ public class SnowmanRunnable extends BukkitRunnable {
         snowmanExists = true;
     }
 
-    public int getRandomNumber(double min, double max) {
+    private int getRandomNumber(double min, double max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
