@@ -17,10 +17,9 @@ public class SnowmanCommand implements CommandExecutor {
 
             snowTask = new SnowmanRunnable(p).runTaskTimer(Main.getInstance(), 0L, 24000L);
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.getInstance().getConfig().getString("Messages.snowman-spawn")));
-            return true;
-        }
-
-        sender.sendMessage(ChatColor.AQUA + "Команда доступна только для игроков!");
+        } else
+            sender.sendMessage(ChatColor.AQUA + "Команда доступна только для игроков!");
+        
         return true;
     }
 
